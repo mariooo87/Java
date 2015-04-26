@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MYreport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c9c62b97-9a6c-4307-8c3d-d5718a268b04">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="170"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="odabranoPonudaPotraznja" class="edunova.model.PonudaPotraznja"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="ponudapotraznja" class="edunova.model.PonudaPotraznja"/>
+	<parameter name="klijent" class="edunova.model.Klijent"/>
+	<parameter name="nekretnina" class="edunova.model.Nekretnina"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band height="127">
+				<textField>
+					<reportElement x="113" y="93" width="187" height="20" uuid="4782d1d8-e2d4-4028-89ed-cf399955818d"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{klijent}.getEmail()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="15" y="53" width="98" height="20" uuid="fe0d3c02-a273-429e-8cc3-79e982f38c3c"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[IBAN:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="113" y="73" width="187" height="20" uuid="8a9f7f6a-4cb1-4c10-a724-52c0151ce356"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{klijent}.getBrojtelefona()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="0" width="156" height="20" uuid="249aa33d-da25-470c-b44e-90f553d82a96"/>
+					<textElement>
+						<font size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[PODATCI O KLIJENTU]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="15" y="93" width="98" height="20" uuid="4dad35a3-dcf7-4b06-8f18-de47d0e420b2"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[E-mail:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="15" y="73" width="98" height="20" uuid="58c5e2bc-d171-41e9-bd30-df81c0f155fc"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Broj telefona:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="113" y="33" width="187" height="20" uuid="a267f854-899a-42b0-8715-2118abab1f40"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{ponudapotraznja}.getKlijenti()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="113" y="53" width="187" height="20" uuid="2f8cb4ee-9b3a-4e6e-b4f7-5d9b2362e522"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{klijent}.getIban()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="15" y="33" width="98" height="20" uuid="ff3402b7-7077-4e6a-bfee-24994e7b6650"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Ime i prezime klijenta:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="172">
+				<staticText>
+					<reportElement x="16" y="94" width="125" height="20" uuid="37f013b6-a218-47d2-9ef8-8fbfa9afe0c2"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Cijena s provizijom[eur]:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="74" width="125" height="20" uuid="ac1f1e97-d0c5-4d59-96df-f32a2a0b597f"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Provizija:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="140" y="94" width="213" height="20" uuid="57a66328-3258-4176-97a6-8ddc26a659c1"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{ponudapotraznja}.getCijenasprovizijom()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="2" y="0" width="156" height="20" uuid="d440f095-2250-47d9-b90c-e301220e53a0"/>
+					<textElement>
+						<font size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[KUPOPRODAJNI DETALJI]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="140" y="74" width="213" height="20" uuid="e4d6254b-0ce7-4ca9-8437-153f90f8f427"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{klijent}.getProvizija()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="78" y="132" width="213" height="20" uuid="ef5c7831-29bb-43fd-91ae-dfaadcfd3daa"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="16" y="132" width="62" height="20" uuid="cc66ef78-7b70-4be3-ab1e-2bbb3e605ab5"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[U Osijeku:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="34" width="124" height="20" uuid="8ff7fde4-2497-41bc-a2de-fd1c5a2dca5b"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Kupnja nekretnine:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="54" width="124" height="20" uuid="5269f157-1dce-43b6-8003-863f1dc1983f"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Prodaja nekretnine:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="140" y="34" width="213" height="20" uuid="9a75501d-48a7-42a9-91df-9c007d72531a"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{ponudapotraznja}.getKupnjanekretnine()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="140" y="54" width="213" height="20" uuid="ab75feac-cc16-4acf-87eb-47047de4480b"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{ponudapotraznja}.getProdajanekretnine()]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band height="162" splitType="Stretch">
+				<textField>
+					<reportElement x="114" y="113" width="201" height="20" uuid="6f828a80-1ca0-4154-911c-0866d1c02238"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getPovrsinaokucnice()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="114" y="133" width="201" height="20" uuid="de3a13a3-9611-46a5-988f-3511b48e628e"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getCijena()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="433" y="134" width="103" height="20" uuid="b0e30dab-9b9e-46a8-87c0-3d6bd8e5b9c8"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.isUporabnadozvola()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="14" y="113" width="98" height="20" uuid="68f72ce9-08f0-4683-8493-99afe6f20541"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Površina okućnice:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="323" y="53" width="110" height="20" uuid="3d2e2c0b-f423-4537-93b6-4cdd690d4cbc"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Broj etaža:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="14" y="33" width="98" height="20" uuid="be11f788-b5ef-4d1c-af31-df1fd943fde8"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Vrsta nekretnine:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="323" y="33" width="110" height="20" uuid="09e98e3c-a7b2-4968-a49b-8a76521b851c"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Vrsta grijanja:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="433" y="33" width="103" height="20" uuid="635b70fb-9268-478f-b7aa-c5e751b2b993"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getVrstagrijanja()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="433" y="73" width="103" height="20" uuid="61faf853-4818-4f3d-b3bb-52535e605a49"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getBrojsoba()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="14" y="53" width="98" height="20" uuid="eb1cd742-08f9-4b71-9092-cba6929bf7c2"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Godina izgradnje:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="14" y="73" width="98" height="20" uuid="840bf1d9-c2ee-4894-9b21-ea5ca89b7c60"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Lokacija:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="323" y="94" width="110" height="20" uuid="f9851f89-3d91-4f8c-a833-9f1438694bb7"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Vlasnički list:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="14" y="133" width="98" height="20" uuid="2d267a04-0ff0-4277-8619-699e57fa98d1"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Cijena[eur]:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="114" y="53" width="201" height="20" uuid="dff76c86-e04b-4730-a182-f713b2c8ef1d"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getGodinaizgradnje()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="114" y="33" width="201" height="20" uuid="bb9a6d38-f551-40d7-8df8-59c72091b4a7"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getVrsta()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="323" y="73" width="110" height="20" uuid="e0d3ddda-2a4d-461e-b303-85868cf0f647"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Broj soba:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="323" y="114" width="110" height="20" uuid="0d76b758-1879-4ad5-90bc-5d33f8caa85a"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Građevinska dozvola:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="114" y="73" width="201" height="20" uuid="b1e216b1-d327-4195-bf1d-c30e128cd0a5"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getLokacija()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="114" y="93" width="201" height="20" uuid="fff06414-06ca-4bc0-9b70-838ea36d7e40"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getStambenapovrsina()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="14" y="93" width="98" height="20" uuid="30158287-ada2-4add-b3d7-92a748159cc1"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Stambena površina:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="433" y="114" width="103" height="20" uuid="79cfd2c8-2715-45a3-abf0-8ddac3bda048"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.isGradevinskadozvola()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="2" y="0" width="156" height="20" uuid="f2fb2ed0-852d-4023-8d30-1c24236467be"/>
+					<textElement>
+						<font size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[PODATCI O NEKRETNINI]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="323" y="134" width="110" height="20" uuid="0ad5b485-a24e-4bc9-b438-cb9a5a771c33"/>
+					<textElement>
+						<font isBold="true" pdfEncoding="Cp1250"/>
+					</textElement>
+					<text><![CDATA[Uporabna dozvola:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="433" y="94" width="103" height="20" uuid="a3525d73-abd7-4d8b-acc0-438f5c6554e9"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.isVlasnickilist()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="433" y="53" width="103" height="20" uuid="10200e23-8c0f-4f9a-85f7-7508cffaf4ae"/>
+					<textElement>
+						<font pdfEncoding="Cp1250"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nekretnina}.getBrojetaza()]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="100" backcolor="#6699FF" uuid="f63cdd6a-c834-433e-aa47-d6adc805bc6c"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="4312ef9d-4f19-4c69-9dcc-3552c333cabf"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Nekretnine d.o.o.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="188" y="71" width="213" height="29" forecolor="#000000" uuid="0a7fa263-0618-4a71-88de-74682ff84bea"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ponuda za nekretninu]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="555" height="18" forecolor="#000000" backcolor="#000000" uuid="80cf8911-4f13-47c7-bca9-7d329688433b"/>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="8" width="555" height="18" uuid="a2919f17-7dbd-4415-9df6-fc7154655134"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ponudapotraznja}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="5" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="6333d0e3-8196-421d-8d93-a1a94434583b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="101" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="22524bf3-2209-46a6-9ee2-0d3a9ac84326"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="443c09e9-2ce8-47a7-ab24-0b226e819158"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="14" y="75" width="126" height="20" uuid="6f1937e7-4c6f-4f75-a344-5168e6c0dc24"/>
+				<textElement>
+					<font pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Telefon: 031 100 200]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="35" width="277" height="20" uuid="759de26d-2630-4c6c-8077-814cedda363a"/>
+				<textElement>
+					<font pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Adresa tvrtke: Ulica Hrvatske Republike bb, 31000 Osijek]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="15" width="241" height="20" uuid="6836fb49-b745-4eb7-8186-96e79e992575"/>
+				<textElement>
+					<font pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Naziv tvrtke: Nekretnine d.o.o.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="55" width="239" height="20" uuid="1daf8fcb-e33e-434c-b99a-0e326395d0e1"/>
+				<textElement>
+					<font pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Matični broj: 07854718495860780]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
