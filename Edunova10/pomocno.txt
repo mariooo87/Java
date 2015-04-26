@@ -1,0 +1,2 @@
+c:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < "D:\J14_NetBeans\Edunova10\skriptaj14DDL.sql"
+c:\xampp\mysql\bin\mysql -uedunova -pedunova edunovaj14 --default_character_set=utf8 < "D:\J14_NetBeans\Edunova10\skriptaj14DML.sql"
